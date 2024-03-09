@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from django.contrib import messages
+
+
 import requests
 
 def get_calorias(request, nome_alimento):
@@ -7,5 +10,7 @@ def get_calorias(request, nome_alimento):
     site = 'https://caloriasporalimentoapi.herokuapp.com/api/calorias/?descricao={}'.format(nome_alimento)
     req = requests.get(site)
     json = req.json()
-    print(json)
+    
+    messages.info(request, json)
+
     return json
