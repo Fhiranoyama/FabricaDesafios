@@ -1,11 +1,6 @@
-from rest_framework.routers import DefaultRouter
-from django.urls import path, include
-from .Api.viewsets import FactoryViewSet
-
-router = DefaultRouter()
-router.register(prefix="nutri", viewset=FactoryViewSet)
-
+from django.urls import path
+from .views import Dieta
 
 urlpatterns = [
-    path("Api/", include(router.urls))
+    path('nutri/', Dieta.as_view()),
 ]
