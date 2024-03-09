@@ -42,6 +42,21 @@ class Dieta(View):
         }
         return JsonResponse(data, status=201)
     
+class updel(View):
+
+    def patch(self, request, item_id):
+        data = json.loads(request.body.decode("utf-8"))
+        item = FactoryModel.objects.get(id=item_id)
+        item.quantidade = data['quantidade de comida']
+        item.save()
+
+        data = {
+            'message': f'Item {item_id} has been updated'
+        }
+
+        return JsonResponse(data)
+
+
     def patch(self, request, item_id):
         ...
 
