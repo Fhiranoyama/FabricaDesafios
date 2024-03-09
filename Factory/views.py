@@ -25,22 +25,35 @@ class Dieta(View):
     def post(self, request):
 
         data = json.loads(request.body.decode("utf-8"))
-        p_name = data.get('descricao')
-        p_price = data.get('calorias')
-        p_quantity = data.get('quantidade')
+        descricao = data.get('descricao')
+        calorias = data.get('calorias')
+        quantidade = data.get('quantidade')
 
-        product_data = {
-            'product_name': p_name,
-            'product_price': p_price,
-            'product_quantity': p_quantity,
+        produco_data = {
+            'descricao': descricao,
+            'calorias': calorias,
+            'quantidade': quantidade,
         }
 
-        cart_item = CartItem.objects.create(**product_data)
+        food_item = FactoryModel.objects.create(**produco_data)
 
         data = {
-            "message": f"New item added to Cart with id: {cart_item.id}"
+            "message": f"food_name: {food_item.id}"
         }
         return JsonResponse(data, status=201)
+    
+    def patch(self, request, item_id):
+        ...
+
+    def delete(self, request, item_id):
+        item = FactoryModel.objects.get(id=item_id)
+        item.delete()
+
+        data = {
+            'message': f'Item {item_id} Food has been removed!'
+        }
+
+        return JsonResponse(data)
     
 
         
