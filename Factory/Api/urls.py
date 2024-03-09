@@ -7,5 +7,5 @@ router.register(prefix="nutri", viewset=FactoryViewSet)
 
 
 urlpatterns = [
-    path("api/", include(router.urls))
+    path("Api/", include(router.urls))
 ]

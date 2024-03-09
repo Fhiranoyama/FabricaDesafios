@@ -1,10 +1,9 @@
 from django.db import models
-from uuid import uuid4
 
-class Factory(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
-    nome = models.CharField(verbose_name="nome", max_length=255)
-    data = models.CharField(verbose_name="data", max_length=255)
-    quantidade = models.DateField(auto_now_add=True)
-    calorias = models.CharField(verbose_name="calorias", max_length=255)
+class FactoryModel(models.Model):
+    descricao = models.CharField(verbose_name="descricao", max_length=40)
+    calorias = models.CharField(verbose_name="calorias", max_length=40)
+
+    def __str__(self) -> str:
+        return f"{self.descricao} {self.calorias}" 

@@ -1,7 +1,7 @@
-from rest_framework import serializers
-from Factory import models
+from rest_framework.serializers import ModelSerializer
+from ..models import FactoryModel
 
-class FactorySerializer(serializers.ModelSerializer):
+class FactorySerializer(ModelSerializer):
     class Meta:
-        model = models.Factory
-        fields = '__all__'
+        model = FactoryModel
+        fields = ['id', 'descricao', 'calorias']

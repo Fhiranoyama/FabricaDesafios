@@ -17,17 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework import routers
-
-from Factory.Api import viewsets as Factoryviewsets
-
-from Factory import views
-
-
-route = routers.DefaultRouter()
-route.register(r'Factory/',Factoryviewsets.FactoryViewSet, basename ="Factory")
 urlpatterns = [
   path('admin/', admin.site.urls),
-  path('', include(route.urls)),
-  path('nutri/<str:nome_alimento>', views.get_calorias, name="nutri"),
+  path('', include('Factory.Api.urls'))
+ 
  ]
