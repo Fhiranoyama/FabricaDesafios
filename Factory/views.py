@@ -9,3 +9,5 @@ def get_calorias(request, nome_alimento):
     json = req.json()
     print(json)
     return json
+
+class 
