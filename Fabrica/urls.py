@@ -19,16 +19,15 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from Factory.api import viewsets as Factoryviewsets
+from Factory.Api import viewsets as Factoryviewsets
 
 
 route = routers.DefaultRouter()
 route.register(r'Factory/',Factoryviewsets.FactoryViewSet, basename ="Factory")
- utlpatterns = [
+urlpatterns = [
   path('admin/', admin.site.urls),
   path('', include(route.urls))
  ]
-
 
 
 urlpatterns = [
