@@ -21,8 +21,7 @@ class Dieta(View):
             response.write(f"<tr><td>{food['descricao']}</td><td>{food['quantidade']}</td><td>{food['calorias']}</td></tr>")
         response.write("</table>")
         return response
-        #lemmbrar de terminar os commits e ajustar cada pasta para organizar
-    #(lembrete as senhas estao no banco de chaves )
+       
     
 
         
