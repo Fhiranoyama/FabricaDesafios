@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
-from .viewsets import FactoryViewSet
+from .Api.viewsets import FactoryViewSet
 
 router = DefaultRouter()
 router.register(prefix="nutri", viewset=FactoryViewSet)
