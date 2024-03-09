@@ -21,7 +21,26 @@ class Dieta(View):
             response.write(f"<tr><td>{food['descricao']}</td><td>{food['quantidade']}</td><td>{food['calorias']}</td></tr>")
         response.write("</table>")
         return response
-       
+    
+    def post(self, request):
+
+        data = json.loads(request.body.decode("utf-8"))
+        p_name = data.get('descricao')
+        p_price = data.get('calorias')
+        p_quantity = data.get('quantidade')
+
+        product_data = {
+            'product_name': p_name,
+            'product_price': p_price,
+            'product_quantity': p_quantity,
+        }
+
+        cart_item = CartItem.objects.create(**product_data)
+
+        data = {
+            "message": f"New item added to Cart with id: {cart_item.id}"
+        }
+        return JsonResponse(data, status=201)
     
 
         
