@@ -1,7 +1,7 @@
 from django.db import models
 from uuid import uuid4
 
-class Factory(models.model):
+class Factory(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     nome = models.CharField(verbose_name="nome", max_length=255)

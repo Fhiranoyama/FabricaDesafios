@@ -24,6 +24,10 @@ from Factory.api import viewsets as Factoryviewsets
 
 route = routers.DefaultRouter()
 route.register(r'Factory/',Factoryviewsets.FactoryViewSet, basename ="Factory")
+ utlpatterns = [
+  path('admin/', admin.site.urls),
+  path('', include(route.urls))
+ ]
 
 
 
