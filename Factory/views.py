@@ -42,12 +42,13 @@ class Dieta(View):
         }
         return JsonResponse(data, status=201)
     
+@method_decorator(csrf_exempt, name='dispatch')
 class updel(View):
 
     def patch(self, request, item_id):
         data = json.loads(request.body.decode("utf-8"))
         item = FactoryModel.objects.get(id=item_id)
-        item.quantidade = data['quantidade de comida']
+        item.quantidade= data['quantidade_de_comida']
         item.save()
 
         data = {
@@ -56,9 +57,6 @@ class updel(View):
 
         return JsonResponse(data)
 
-
-    def patch(self, request, item_id):
-        ...
 
     def delete(self, request, item_id):
         item = FactoryModel.objects.get(id=item_id)
@@ -71,4 +69,3 @@ class updel(View):
         return JsonResponse(data)
     
 
-        
